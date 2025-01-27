@@ -1,21 +1,45 @@
-Siempre contesta en español.
+# Instrucciones para GitHub Copilot
 
+## Instrucciones generales
+
+Siempre responder en español.
 El código debe estar en inglés.
-
-El proyecto trabaja con NestJS, TypeORM, PostgreSQL y TypeScript.
-
-Todos los métodos y funciones deben tener un tipeado en su retorno y en sus parámetros.
-
+El proyecto trabaja con NestJS, TypeORM, SQLite y TypeScript.
+Aplicar principios SOLID.
+Aplicar patrones de diseño en lo posible.
+Aplicar Clean Code.
+Consultar la documentación de React 18.
+Siempre responder con TypeScript.
+Variable, funciones y métodos, siempre deben de estar tipeados.
 No usar `any` en el código.
-
 No usar `unknown` en el código.
-
 No usar `undefined` en el código.
+No usar `var` en el código.
+Usar siempre `interface` en lugar de `type`.
+Siempre usar `const` y `let`.
 
-Las pruebas unitarias deben ser escritas en Jest bajo el patrón AAA.
+## Instrucciones para pruebas unitarias
 
-Los nombres de las pruebas unitarias deben ser descriptivos y en inglés.
+Hacer pruebas unitarias sólo sí se solicita explícitamente.
+Las pruebas unitarias se realizan con Jest.
+Pruebas unitarias siempre con el patrón AAA.
+Siempre probar el happy path.
+Siempre probar el unhappy path.
 
-Los nombres de las variables que son usadas para ser inyectadas en la zona de Act de las pruebas unitarias deben ser descriptivas e independientes de las variables de la zona de Assert.
+## Ejemplo de respuesta en Pruebas Unitarias aplicando el patrón AAA
 
-Los valores usados en el área del Assert de las pruebas unitarias deben de estar en variables con nombres descriptivos, dichas variables también hacen parte de la zona del Arrange.
+```typescript
+it('should apply zoom class after clicking on a button', () => {
+  // Arrange
+  render(<ZoomableImageComponent />);
+  const [planeButton] = screen.getAllByRole('button');
+  const container = document.querySelector('.full-image');
+  const expectedZoomClass = 'zoomed';
+
+  // Act
+  fireEvent.click(planeButton);
+
+  // Assert
+  expect(container).toHaveClass(expectedZoomClass);
+});
+```

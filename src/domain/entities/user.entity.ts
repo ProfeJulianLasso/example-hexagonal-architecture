@@ -75,7 +75,7 @@ export class UserEntity {
       this._errors.set('email', false);
     }
 
-    if (this.password.length > 0 > this.validatePassword() === false) {
+    if (this.password.length > 0 && this.validatePassword() === false) {
       this._errors.set('password', false);
     }
 
